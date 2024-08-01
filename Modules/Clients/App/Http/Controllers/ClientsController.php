@@ -17,20 +17,19 @@ class ClientsController extends Api
 
         return $type == 'store' ?
             // store Rules
+
             [
-                [
-                    'type' => 'required|string',
-                    'name' => 'required|string',
-                    'identity_number' => 'required|numeric|unique:clients',
-                    'tax_number' => 'nullable|numeric|unique:clients',
-                    'phone' => 'required|string',
-                    'email' => 'nullable|email',
-                    'address' => 'nullable|string',
-                    'notes' => 'nullable|string',
-                ]
+                'type' => 'required|string',
+                'name' => 'required|string',
+                'identity_number' => 'required|numeric|unique:clients',
+                'tax_number' => 'nullable|numeric|unique:clients',
+                'phone' => 'required|string',
+                'email' => 'nullable|email',
+                'address' => 'nullable|string',
+                'notes' => 'nullable|string',
+            ]
 
-
-            ] :
+            :
             // Update Rules
             [
                 'type' => 'required|string',
@@ -47,10 +46,14 @@ class ClientsController extends Api
     public function niceName(): array
     {
         return [
-            'title' => __('main.title'),
-            'status' => __('main.status'),
-            'desc' => __('main.desc'),
-            'file' => __('main.file'),
+            'type' => 'type',
+            'name' => 'name',
+            'identity_number' => 'identity_number',
+            'tax_number' => 'tax_number',
+            'phone' => 'phone',
+            'email' => 'email',
+            'address' => 'address',
+            'notes' => 'notes',
         ];
     }
 }

@@ -22,8 +22,8 @@ class ClientsResource extends JsonResource
             'tax_number' => $this->tax_number,
             'phone' => $this->phone,
             'email' => $this->email,
-            'address' => $this->email,
-            'notes' => $this->email,
+            'address' => $this->address,
+            'notes' => $this->notes,
         ];
     }
 }
