@@ -9,7 +9,8 @@ use Modules\Clients\App\Models\Client;
 class ClientsController extends Api
 {
     protected $entity = Client::class;
-    protected $resourcesJson = ClientsResource::class ;
+    protected $resourcesJson = ClientsResource::class;
+    protected $spatieQueryBuilder = true;
 
     public function rules($type, int $id = null): array
     {
@@ -17,17 +18,29 @@ class ClientsController extends Api
         return $type == 'store' ?
             // store Rules
             [
-                'title' => 'required|string',
-                'desc' => 'required|string',
-                'status' => 'required|string',
-                'file' => 'required|file',
+                [
+                    'type' => 'required|string',
+                    'name' => 'required|string',
+                    'identity_number' => 'required|numeric|unique:clients',
+                    'tax_number' => 'nullable|numeric|unique:clients',
+                    'phone' => 'required|string',
+                    'email' => 'nullable|email',
+                    'address' => 'nullable|string',
+                    'notes' => 'nullable|string',
+                ]
+
+
             ] :
             // Update Rules
             [
-                'title' => 'required',
-                'desc' => 'required',
-                'status' => 'required',
-                'file' => 'sometimes|nullable|file',
+                'type' => 'required|string',
+                'name' => 'required|string',
+                'identity_number' => 'required|numeric|unique:clients',
+                'tax_number' => 'nullable|numeric|unique:clients',
+                'phone' => 'required|string',
+                'email' => 'nullable|email',
+                'address' => 'nullable|string',
+                'notes' => 'nullable|string',
             ];
     }
 

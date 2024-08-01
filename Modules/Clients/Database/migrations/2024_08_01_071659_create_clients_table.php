@@ -25,7 +25,7 @@ return new class extends Migration {
 
             $table->string('email')->nullable();
 
-            $table->string('address');
+            $table->string('address')->nullable();
 
             $table->longText('notes')->nullable();
 
